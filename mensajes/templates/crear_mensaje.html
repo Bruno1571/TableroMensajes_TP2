@@ -3,6 +3,11 @@
 
 {% block content %}
     <h2>Crear un Nuevo Mensaje</h2>
+    {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+    {% endif %}
     <form method="post" action="{% url 'crear_mensaje' %}">
         <label for="texto">Texto:</label>
         <textarea id="texto" name="texto" rows="4" cols="50"></textarea><br><br>
