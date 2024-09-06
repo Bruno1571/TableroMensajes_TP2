@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Mensajes recibidos{% endblock %}
+
+{% block content %}
+    <h2>Mensajes recibidos</h2>
+    {% if mensajes %}
+        <ul>
+            {% for mensaje in mensajes %}
+                <li>
+                    <strong>De:</strong> {{ mensaje.remitente }}<br>
+                    <strong>Para:</strong> {{ mensaje.destinatario }}<br>
+                    <strong>Fecha:</strong> {{ mensaje.fecha_envio }}<br>
+                    <strong>Mensaje:</strong> {{ mensaje.texto }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tienes mensajes recibidos.</p>
+    {% endif %}
+
+{% endblock %}
