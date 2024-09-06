@@ -4,18 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Tablero de Mensajes{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'estilos/style.css' %}">
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'crear_mensaje' %}">Crear Mensaje</a></li>
-                <li><a href="#">Eliminar Mensaje</a></li>
-                <li><a href="{% url 'mensajes_recibidos' %}">Mensajes Recibidos</a></li>
-                <li><a href="{% url 'mensajes_enviados' %}">Mensajes Enviados</a></li>
-            </ul>
-            
-        </nav>
+        {% include 'navbar.html' %}
     </header>
 
     <main>
