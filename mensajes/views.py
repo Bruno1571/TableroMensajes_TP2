@@ -22,14 +22,10 @@ def crear_mensaje(request):
 
 
 def mensajes_recibidos(request):
-    # Obtener el destinatario 
-    destinatario = request.GET.get('destinatario', '')
-
-    # Filtrar los mensajes que tienen el destinatario 
-    if destinatario:
+    if 'destinatario' in request.GET:
+        destinatario = request.GET['destinatario']
         mensajes = Mensaje.objects.filter(destinatario=destinatario)
     else:
-        mensajes = Mensaje.objects.none()  
+        mensajes = Mensaje.objects.none()  # Si no hay destinatario, no se muestran mensajes
 
-   
     return render(request, 'mensajes_recibidos.html', {'mensajes': mensajes})

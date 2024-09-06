@@ -3,6 +3,11 @@
 
 {% block content %}
     <h2>Mensajes recibidos</h2>
+    <form method="get" action="{% url 'mensajes_recibidos' %}">
+        <label for="destinatario">Destinatario:</label>
+        <input type="text" id="destinatario" name="destinatario">
+        <input type="submit" value="Buscar">
+    </form>
     {% if mensajes %}
         <ul>
             {% for mensaje in mensajes %}
