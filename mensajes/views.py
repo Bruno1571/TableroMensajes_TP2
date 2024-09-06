@@ -29,3 +29,15 @@ def mensajes_recibidos(request):
         mensajes = Mensaje.objects.none()  # Si no hay destinatario, no se muestran mensajes
 
     return render(request, 'mensajes_recibidos.html', {'mensajes': mensajes})
+
+
+
+def mensajes_enviados(request):
+    if 'remitente' in request.GET:
+        remitente = request.GET['remitente']
+        mensajes = Mensaje.objects.filter(remitente=remitente)
+    else:
+        mensajes = Mensaje.objects.none()  # Si no hay remitente, no se muestran mensajes
+
+    return render(request, 'mensajes_enviados.html', {'mensajes': mensajes})
+

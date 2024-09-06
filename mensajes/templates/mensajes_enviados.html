@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Mensajes Enviados{% endblock %}
+
+{% block content %}
+    <h2>Mensajes enviados</h2>
+    <form method="get" action="{% url 'mensajes_enviados' %}">
+        <label for="remitente">Remitente:</label>
+        <input type="text" id="remitente" name="remitente">
+        <input type="submit" value="Buscar">
+    </form>
+    {% if mensajes %}
+        <ul>
+            {% for mensaje in mensajes %}
+                <li>
+                    <strong>De:</strong> {{ mensaje.remitente }}<br>
+                    <strong>Para:</strong> {{ mensaje.destinatario }}<br>
+                    <strong>Fecha:</strong> {{ mensaje.fecha_envio }}<br>
+                    <strong>Mensaje:</strong> {{ mensaje.texto }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tienes mensajes enviados.</p>
+    {% endif %}
+
+{% endblock %}
