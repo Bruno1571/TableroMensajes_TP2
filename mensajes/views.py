@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
 from .models import Mensaje
 
 def crear_mensaje(request):
@@ -40,4 +42,10 @@ def mensajes_enviados(request):
         mensajes = Mensaje.objects.none()  # Si no hay remitente, no se muestran mensajes
 
     return render(request, 'mensajes_enviados.html', {'mensajes': mensajes})
+
+
+class EliminarMensajeView(DeleteView):
+    model = Mensaje
+    template_name = 'eliminar_mensaje.html'  # Plantilla para confirmar la eliminación
+    success_url = reverse_lazy('mensajes_recibidos')  # Redirige a la página de mensajes recibidos tras eliminar
 

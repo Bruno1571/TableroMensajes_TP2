@@ -15,12 +15,12 @@
                     <strong>De:</strong> {{ mensaje.remitente }}<br>
                     <strong>Para:</strong> {{ mensaje.destinatario }}<br>
                     <strong>Fecha:</strong> {{ mensaje.fecha_envio }}<br>
-                    <strong>Mensaje:</strong> {{ mensaje.texto }}
+                    <strong>Mensaje:</strong> {{ mensaje.texto }}<br>
+                    <a href="{% url 'eliminar_mensaje' mensaje.id %}">Eliminar</a>
                 </li>
             {% endfor %}
         </ul>
     {% else %}
         <p>No tienes mensajes enviados.</p>
     {% endif %}
-
 {% endblock %}
